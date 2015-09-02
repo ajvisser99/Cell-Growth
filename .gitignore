@@ -5,3 +5,3427 @@ application.linux64
 application.windows32
 application.windows64
 application.macosx
+color Color1 = color(random(255),random(255),random(255));
+color randcolor0 = color(random(255),random(255),random(255));
+color randcolor1 = color(random(255),random(255),random(255));
+color randcolor2 = color(random(255),random(255),random(255));
+color randcolor3 = color(random(255),random(255),random(255));
+color randcolor4 = color(random(255),random(255),random(255));
+color randcolor5 = color(random(255),random(255),random(255));
+color randcolor6 = color(random(255),random(255),random(255));
+color randcolor7 = color(random(255),random(255),random(255));
+
+
+float size = 10;
+float maxsize = 50;
+float x = 600;
+float y = 350;
+float speed = 5;
+float[] dotsx = {random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200)};
+float[] dotsy = {random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700)};
+float[] blobsize = {maxsize,maxsize,maxsize,maxsize,maxsize,maxsize,maxsize,maxsize,maxsize,maxsize};
+float[] blobx = {random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200)};
+float[] bloby = {random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700)};
+float[] blobspeed = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+float[] pointx = {random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200),random(0,1200)};
+float[] pointy = {random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700),random(0,700)};
+int Score = 0;
+int highscore = 0;
+
+void setup()
+{
+  size(1200,700);
+  background(0,0,0);
+  
+}
+
+void draw()
+{
+ background(0,0,0);
+ fill(35,250,25);
+ text("SCORE:",10,15);
+ text(Score,60,15);
+ text("HIGHSCORE:",10,35);
+ text(highscore,85,35);
+ 
+fill(Color1); 
+ellipse(x,y,size,size);
+println(size);
+//SPEED STUFF
+if(size <= 20)
+{
+ speed = 5;
+}
+
+//BIGGER
+if(size >= maxsize)
+{
+  maxsize = 50;
+}
+if(maxsize >= 275)
+{
+  maxsize = 275;
+}
+if(size <= 15)
+{
+ maxsize = 50;
+}
+//SCORING
+if(size >= 300)
+{
+  size = 10;
+  Score = Score + 1;
+}
+if(Score >= highscore)
+{
+  highscore = Score;
+}
+//Moving
+if(x < mouseX)
+{
+  x = x + speed;
+}
+
+if(x > mouseX)
+{
+ x = x - speed; 
+}
+
+if(y < mouseY)
+{
+ y = y + speed; 
+}
+
+if(y > mouseY)
+{
+ y = y - speed; 
+}
+
+//Dots
+fill(randcolor0);
+ellipse(dotsx[0],dotsy[0],5,5);
+
+fill(randcolor1);
+ellipse(dotsx[1],dotsy[1],5,5);
+
+fill(randcolor2);
+ellipse(dotsx[2],dotsy[2],5,5);
+
+fill(randcolor3);
+ellipse(dotsx[3],dotsy[3],5,5);
+
+fill(randcolor4);
+ellipse(dotsx[4],dotsy[4],5,5);
+
+fill(randcolor5);
+ellipse(dotsx[5],dotsy[5],5,5);
+
+fill(randcolor6);
+ellipse(dotsx[6],dotsy[6],5,5);
+
+fill(randcolor7);
+ellipse(dotsx[7],dotsy[7],5,5);
+
+fill(randcolor1);
+ellipse(dotsx[8],dotsy[8],5,5);
+
+fill(randcolor2);
+ellipse(dotsx[9],dotsy[9],5,5);
+
+fill(randcolor3);
+ellipse(dotsx[10],dotsy[10],5,5);
+
+fill(randcolor4);
+ellipse(dotsx[11],dotsy[11],5,5);
+
+fill(randcolor5);
+ellipse(dotsx[12],dotsy[12],5,5);
+
+fill(randcolor6);
+ellipse(dotsx[13],dotsy[13],5,5);
+
+fill(randcolor7);
+ellipse(dotsx[14],dotsy[14],5,5);
+
+
+
+
+
+//Eating Dots
+if(dist(x,y,dotsx[0],dotsy[0]) <= size)
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[1],dotsy[1]) <= size)
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[2],dotsy[2]) <= size)
+{
+  dotsx[2] = random(0,1200);
+  dotsy[0] = random(0,700);
+size = size + 1;
+speed = speed- .05;
+}
+if(dist(x,y,dotsx[3],dotsy[3]) <= size)
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[4],dotsy[4]) <= size)
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[5],dotsy[5]) <= size)
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[6],dotsy[6]) <= size)
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[7],dotsy[7]) <= size)
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[8],dotsy[8]) <= size)
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[9],dotsy[9]) <= size)
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[10],dotsy[10]) <= size)
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[11],dotsy[11]) <= size)
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[12],dotsy[12]) <= size)
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+if(dist(x,y,dotsx[13],dotsy[13]) <= size)
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+size = size + 1;
+speed = speed - .05;
+}
+if(dist(x,y,dotsx[14],dotsy[14]) <= size)
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+size = size + 1;
+speed = speed -.05;
+}
+
+//Speed
+if(speed <= 1.5)
+{
+  speed = 1.5;
+}
+
+
+
+ 
+//BLOBS
+fill(randcolor0);
+ellipse(blobx[0],bloby[0],blobsize[0],blobsize[0]);
+
+//BLOBS MOVEMENT
+if(blobx[0] < pointx[0])
+{
+  blobx[0] = blobx[0] + blobspeed[0];
+}
+if(blobx[0] > pointx[0])
+{
+  blobx[0] = blobx[0] - blobspeed[0];
+}
+if(bloby[0] < pointy[0])
+{
+  bloby[0] = bloby[0] + blobspeed[0];
+}
+if(bloby[0] > pointy[0])
+{
+  bloby[0] = bloby[0] - blobspeed[0];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[0],bloby[0],pointx[0],pointy[0]) <= 5)
+{
+ pointx[0] = random(0,1200);
+pointy[0] = random(0,700); 
+}
+
+//EATING BLOBS
+if(dist(x,y,blobx[0],bloby[0]) <= blobsize[0]/2 && blobsize[0] >= size)
+{
+  size = 10;
+  x = random(0,1200);
+  y = random(0,700);
+  speed = 5;
+  Score = 0;
+}
+if(dist(x,y,blobx[0],bloby[0]) <= blobsize[0]/2 && blobsize[0] <= size)
+{
+  size = size + blobsize[0]/4;
+  blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+
+  speed = speed - blobsize[0]*.005;
+  
+  
+}
+
+//BLOBS EATING
+if(dist(blobx[0],bloby[0],dotsx[0],dotsy[0]) <= blobsize[0])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+if(dist(blobx[0],bloby[0],dotsx[1],dotsy[1]) <= blobsize[0])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+if(dist(blobx[0],bloby[0],dotsx[2],dotsy[2]) <= blobsize[0])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+if(dist(blobx[0],bloby[0],dotsx[3],dotsy[3]) <= blobsize[0])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[4],dotsy[4]) <= blobsize[0])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[5],dotsy[5]) <= blobsize[0])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[6],dotsy[6]) <= blobsize[0])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[7],dotsy[7]) <= blobsize[0])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[8],dotsy[8]) <= blobsize[0])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[9],dotsy[9]) <= blobsize[0])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[10],dotsy[10]) <= blobsize[0])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[11],dotsy[11]) <= blobsize[0])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+if(dist(blobx[0],bloby[0],dotsx[12],dotsy[12]) <= blobsize[0])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+if(dist(blobx[0],bloby[0],dotsx[13],dotsy[13]) <= blobsize[0])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}if(dist(blobx[0],bloby[0],dotsx[14],dotsy[14]) <= blobsize[0])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[0] = blobsize[0] + 1;
+blobspeed[0] = blobspeed[0] - .05;
+}
+//BLOB SPEED
+if(blobsize[0] <= 20 && blobsize[0]<= 21)
+{
+  blobspeed[0] = 4;
+}
+if(blobsize[0] >=21 && blobsize[0]<= 22)
+{
+  blobspeed[0] = 3.95;
+}
+if(blobsize[0] >=22 && blobsize[0]<= 23)
+{
+  blobspeed[0] = 3.9;
+}
+if(blobsize[0] >=23 && blobsize[0]<= 24) 
+{
+  blobspeed[0] = 3.85;
+}
+if(blobsize[0] >=24 && blobsize[0]<= 25)
+{
+  blobspeed[0] = 3.8;
+}
+if(blobsize[0] >=25 && blobsize[0]<= 26)
+{
+  blobspeed[0] = 3.75;
+}
+if(blobsize[0] >=26 && blobsize[0]<= 27)
+{
+  blobspeed[0] = 3.7;
+}
+if(blobsize[0] >=27 && blobsize[0]<= 28)
+{
+  blobspeed[0] = 3.65;
+}
+if(blobsize[0] >=28 && blobsize[0]<= 29)
+{
+  blobspeed[0] = 3.6;
+}
+if(blobsize[0] >=29 && blobsize[0]<= 30)
+{
+  blobspeed[0] = 3.55;
+}
+if(blobsize[0] >=30 && blobsize[0]<= 31)
+{
+  blobspeed[0] = 3.5;
+}
+if(blobsize[0] >=31 && blobsize[0]<= 32)
+{
+  blobspeed[0] = 3.45;
+}
+if(blobsize[0] >=32 && blobsize[0]<= 33)
+{
+  blobspeed[0] = 3.4;
+}
+if(blobsize[0] >=33 && blobsize[0]<= 34)
+{
+  blobspeed[0] = 3.35;
+}
+if(blobsize[0] >=34 && blobsize[0]<= 35)
+{
+  blobspeed[0] = 3.3;
+}
+if(blobsize[0] >=35 && blobsize[0]<= 36)
+{
+  blobspeed[0] = 3.25;
+}
+if(blobsize[0] >=36 && blobsize[0]<= 37)
+{
+  blobspeed[0] = 3.2;
+}
+if(blobsize[0] >=37 && blobsize[0]<= 38)
+{
+  blobspeed[0] = 3.15;
+}
+if(blobsize[0] >=38 && blobsize[0]<= 39)
+{
+  blobspeed[0] = 3.1;
+}
+if(blobsize[0] >=39 && blobsize[0]<= 40)
+{
+  blobspeed[0] = 3.05;
+}
+if(blobsize[0] >=40&& blobsize[0]<= 41)
+{
+  blobspeed[0] = 3;
+}
+if(blobsize[0] >=41&& blobsize[0]<= 42)
+{
+  blobspeed[0] = 2.95;
+}
+if(blobsize[0] >=42&& blobsize[0]<= 43)
+{
+  blobspeed[0] = 2.9;
+}
+if(blobsize[0] >=43&& blobsize[0]<= 44)
+{
+  blobspeed[0] = 2.85;
+}
+if(blobsize[0] >=44&& blobsize[0]<= 45)
+{
+  blobspeed[0] = 2.8;
+}
+if(blobsize[0] >=45&& blobsize[0]<= 46)
+{
+  blobspeed[0] = 2.75;
+}
+if(blobsize[0] >=46&& blobsize[0]<= 47)
+{
+  blobspeed[0] = 2.7;
+}
+if(blobsize[0] >=47&& blobsize[0]<= 48)
+{
+  blobspeed[0] = 2.65;
+}
+if(blobsize[0] >=48&& blobsize[0]<= 49)
+{
+  blobspeed[0] = 2.6;
+}
+if(blobsize[0] >=49&& blobsize[0]<= 50)
+{
+  blobspeed[0] = 2.55;
+}
+if(blobsize[0] >=50&& blobsize[0]<= 51)
+{
+  blobspeed[0] = 2.5;
+}
+if(blobsize[0] >=51&& blobsize[0]<= 52)
+{
+  blobspeed[0] = 2.45;
+}
+if(blobsize[0] >=52&& blobsize[0]<= 53)
+{
+  blobspeed[0] = 2.4;
+}
+if(blobsize[0] >=53&& blobsize[0]<= 54)
+{
+  blobspeed[0] = 2.35;
+}
+if(blobsize[0] >=54&& blobsize[0]<= 55)
+{
+  blobspeed[0] = 2.3;
+}
+if(blobsize[0] >=55&& blobsize[0]<= 56)
+{
+  blobspeed[0] = 2.25;
+}
+if(blobsize[0] >=56&& blobsize[0]<= 57)
+{
+  blobspeed[0] = 2.2;
+}
+if(blobsize[0] >=57&& blobsize[0]<= 58)
+{
+  blobspeed[0] = 2.15;
+}
+if(blobsize[0] >=58&& blobsize[0]<= 59)
+{
+  blobspeed[0] = 2.1;
+}
+if(blobsize[0] >=59&& blobsize[0]<= 60)
+{
+  blobspeed[0] = 2.05;
+}
+if(blobsize[0] >=60&& blobsize[0]<= 61)
+{
+  blobspeed[0] = 2.0;
+}
+if(blobsize[0] >=61&& blobsize[0]<= 62)
+{
+  blobspeed[0] = 2.0;
+}
+if(blobsize[0] >=62&& blobsize[0]<= 63)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=63&& blobsize[0]<= 64)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=64&& blobsize[0]<= 65)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=65&& blobsize[0]<= 66)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=66&& blobsize[0]<= 67)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=67&& blobsize[0]<= 68)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=68&& blobsize[0]<= 69)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=69&& blobsize[0]<= 70)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=70&& blobsize[0]<= 71)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=71&& blobsize[0]<= 72)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=72&& blobsize[0]<= 73)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=73&& blobsize[0]<= 74)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=74&& blobsize[0]<= 75)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=75&& blobsize[0]<= 76)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=76&& blobsize[0]<= 77)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=77&& blobsize[0]<= 78)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=78&& blobsize[0]<= 79)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >=79&& blobsize[0]<= 80)
+{
+  blobspeed[0] = 2;
+}
+if(blobsize[0] >= 80)
+{
+  blobspeed[0] = 2;
+}
+//BLOBS
+fill(randcolor1);
+ellipse(blobx[1],bloby[1],blobsize[1],blobsize[1]);
+
+//BLOBS MOVEMENT
+if(blobx[1] < pointx[1])
+{
+  blobx[1] = blobx[1] + blobspeed[1];
+}
+if(blobx[1] > pointx[1])
+{
+  blobx[1] = blobx[1] - blobspeed[1];
+}
+if(bloby[1] < pointy[1])
+{
+  bloby[1] = bloby[1] + blobspeed[1];
+}
+if(bloby[1] > pointy[1])
+{
+  bloby[1] = bloby[1] - blobspeed[1];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[1],bloby[1],pointx[1],pointy[1]) <= 5)
+{
+ pointx[1] = random(0,1200);
+pointy[1] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[1],bloby[1]) <= size/2 && blobsize[1] >= size)
+{
+size = 10;
+x = random(0,1200);
+y = random(0,700);
+Score = 0;
+}
+if(dist(x,y,blobx[1],bloby[1]) <= size/2 && blobsize[1] <= size)
+{
+  size = size + blobsize[1]/4;
+  blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+
+  speed = speed - blobsize[1]*.005;
+  }
+if(dist(x,y,blobx[1],bloby[1]) <=size/2 && blobsize[1] >= size)
+{
+size = 10;
+x = random(0,1200);
+y = random(0,700);
+Score = 0;
+}
+if(dist(x,y,blobx[1],bloby[1]) <= size/2 && blobsize[1] <= size)
+{
+  size = size + blobsize[1]/4;
+  blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+
+  speed = speed - blobsize[1]*.005;
+  
+  
+}
+//BLOBS EATING
+if(dist(blobx[1],bloby[1],dotsx[1],dotsy[1]) <= blobsize[1])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}
+if(dist(blobx[1],bloby[1],dotsx[0],dotsy[0]) <= blobsize[1])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}
+if(dist(blobx[1],bloby[1],dotsx[2],dotsy[2]) <= blobsize[1])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}
+if(dist(blobx[1],bloby[1],dotsx[3],dotsy[3]) <= blobsize[1])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[4],dotsy[4]) <= blobsize[1])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[5],dotsy[5]) <= blobsize[1])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[6],dotsy[6]) <= blobsize[1])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[7],dotsy[7]) <= blobsize[1])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[8],dotsy[8]) <= blobsize[1])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[9],dotsy[9]) <= blobsize[1])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[10],dotsy[10]) <= blobsize[1])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[11],dotsy[11]) <= blobsize[1])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}
+if(dist(blobx[1],bloby[1],dotsx[12],dotsy[12]) <= blobsize[1])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[13],dotsy[13]) <= blobsize[1])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}if(dist(blobx[1],bloby[1],dotsx[14],dotsy[14]) <= blobsize[1])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[1] = blobsize[1] + 1;
+blobspeed[1] = blobspeed[1] - .05;
+}
+//BLOB SPEED
+if(blobsize[1] <=21)
+{
+  blobspeed[1] = 4;
+}
+if(blobsize[1] >=21 && blobsize[1]<= 22)
+{
+  blobspeed[1] = 3.95;
+}
+if(blobsize[1] >=22 && blobsize[1]<= 23)
+{
+  blobspeed[1] = 3.9;
+}
+if(blobsize[1] >=23 && blobsize[1]<= 24) 
+{
+  blobspeed[1] = 3.85;
+}
+if(blobsize[1] >=24 && blobsize[1]<= 25)
+{
+  blobspeed[1] = 3.8;
+}
+if(blobsize[1] >=25 && blobsize[1]<= 26)
+{
+  blobspeed[1] = 3.75;
+}
+if(blobsize[1] >=26 && blobsize[1]<= 27)
+{
+  blobspeed[1] = 3.7;
+}
+if(blobsize[1] >=27 && blobsize[1]<= 28)
+{
+  blobspeed[1] = 3.65;
+}
+if(blobsize[1] >=28 && blobsize[1]<= 29)
+{
+  blobspeed[1] = 3.6;
+}
+if(blobsize[1] >=29 && blobsize[1]<= 30)
+{
+  blobspeed[1] = 3.55;
+}
+if(blobsize[1] >=30 && blobsize[1]<= 31)
+{
+  blobspeed[1] = 3.5;
+}
+if(blobsize[1] >=31 && blobsize[1]<= 32)
+{
+  blobspeed[1] = 3.45;
+}
+if(blobsize[1] >=32 && blobsize[1]<= 33)
+{
+  blobspeed[1] = 3.4;
+}
+if(blobsize[1] >=33 && blobsize[1]<= 34)
+{
+  blobspeed[1] = 3.35;
+}
+if(blobsize[1] >=34 && blobsize[1]<= 35)
+{
+  blobspeed[1] = 3.3;
+}
+if(blobsize[1] >=35 && blobsize[1]<= 36)
+{
+  blobspeed[1] = 3.25;
+}
+if(blobsize[1] >=36 && blobsize[1]<= 37)
+{
+  blobspeed[1] = 3.2;
+}
+if(blobsize[1] >=37 && blobsize[1]<= 38)
+{
+  blobspeed[1] = 3.15;
+}
+if(blobsize[1] >=38 && blobsize[1]<= 39)
+{
+  blobspeed[1] = 3.1;
+}
+if(blobsize[1] >=39 && blobsize[1]<= 40)
+{
+  blobspeed[1] = 3.05;
+}
+if(blobsize[1] >=40&& blobsize[1]<= 41)
+{
+  blobspeed[1] = 3;
+}
+if(blobsize[1] >=41&& blobsize[1]<= 42)
+{
+  blobspeed[1] = 2.95;
+}
+if(blobsize[1] >=42&& blobsize[1]<= 43)
+{
+  blobspeed[1] = 2.9;
+}
+if(blobsize[1] >=43&& blobsize[1]<= 44)
+{
+  blobspeed[1] = 2.85;
+}
+if(blobsize[1] >=44&& blobsize[1]<= 45)
+{
+  blobspeed[1] = 2.8;
+}
+if(blobsize[1] >=45&& blobsize[1]<= 46)
+{
+  blobspeed[1] = 2.75;
+}
+if(blobsize[1] >=46&& blobsize[1]<= 47)
+{
+  blobspeed[1] = 2.7;
+}
+if(blobsize[1] >=47&& blobsize[1]<= 48)
+{
+  blobspeed[1] = 2.65;
+}
+if(blobsize[1] >=48&& blobsize[1]<= 49)
+{
+  blobspeed[1] = 2.6;
+}
+if(blobsize[1] >=49&& blobsize[1]<= 50)
+{
+  blobspeed[1] = 2.55;
+}
+if(blobsize[1] >=50&& blobsize[1]<= 51)
+{
+  blobspeed[1] = 2.5;
+}
+if(blobsize[1] >=51&& blobsize[1]<= 52)
+{
+  blobspeed[1] = 2.45;
+}
+if(blobsize[1] >=52&& blobsize[1]<= 53)
+{
+  blobspeed[1] = 2.4;
+}
+if(blobsize[1] >=53&& blobsize[1]<= 54)
+{
+  blobspeed[1] = 2.35;
+}
+if(blobsize[1] >=54&& blobsize[1]<= 55)
+{
+  blobspeed[1] = 2.3;
+}
+if(blobsize[1] >=55&& blobsize[1]<= 56)
+{
+  blobspeed[1] = 2.25;
+}
+if(blobsize[1] >=56&& blobsize[1]<= 57)
+{
+  blobspeed[1] = 2.2;
+}
+if(blobsize[1] >=57&& blobsize[1]<= 58)
+{
+  blobspeed[1] = 2.15;
+}
+if(blobsize[1] >=58&& blobsize[1]<= 59)
+{
+  blobspeed[1] = 2.1;
+}
+if(blobsize[1] >=59&& blobsize[1]<= 60)
+{
+  blobspeed[1] = 2.05;
+}
+if(blobsize[1] >=60&& blobsize[1]<= 61)
+{
+  blobspeed[1] = 2.0;
+}
+if(blobsize[1] >=61&& blobsize[1]<= 62)
+{
+  blobspeed[1] = 2.0;
+}
+if(blobsize[1] >=62&& blobsize[1]<= 63)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=63&& blobsize[1]<= 64)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=64&& blobsize[1]<= 65)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=65&& blobsize[1]<= 66)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=66&& blobsize[1]<= 67)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=67&& blobsize[1]<= 68)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=68&& blobsize[1]<= 69)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=69&& blobsize[1]<= 70)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=70&& blobsize[1]<= 71)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=71&& blobsize[1]<= 72)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=72&& blobsize[1]<= 73)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=73&& blobsize[1]<= 74)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=74&& blobsize[1]<= 75)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=75&& blobsize[1]<= 76)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=76&& blobsize[1]<= 77)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=77&& blobsize[1]<= 78)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=78&& blobsize[1]<= 79)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >=79&& blobsize[1]<= 80)
+{
+  blobspeed[1] = 2;
+}
+if(blobsize[1] >= 80)
+{
+  blobspeed[1] = 2;
+}
+//BLOBS
+fill(randcolor2);
+ellipse(blobx[2],bloby[2],blobsize[2],blobsize[2]);
+
+//BLOBS MOVEMENT
+if(blobx[2] < pointx[2])
+{
+  blobx[2] = blobx[2] + blobspeed[2];
+}
+if(blobx[2] > pointx[2])
+{
+  blobx[2] = blobx[2] - blobspeed[2];
+}
+if(bloby[2] < pointy[2])
+{
+  bloby[2] = bloby[2] + blobspeed[2];
+}
+if(bloby[2] > pointy[2])
+{
+  bloby[2] = bloby[2] - blobspeed[2];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[2],bloby[2],pointx[2],pointy[2]) <= 5)
+{
+ pointx[2] = random(0,1200);
+pointy[2] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[2],bloby[2]) <= size/2 && blobsize[2] >= size)
+{
+  size = 10;
+  x = random(0,1200);
+  y = random(0,700);
+  speed = 5;
+  Score = 0;
+}
+if(dist(x,y,blobx[2],bloby[2]) <= size/2 && blobsize[2] <= size)
+{
+  size = size + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+ ;
+  speed = speed - blobsize[2]*.005;
+  
+  
+}
+
+//BLOBS EATING
+if(dist(blobx[2],bloby[2],dotsx[1],dotsy[1]) <= blobsize[2])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}
+if(dist(blobx[2],bloby[2],dotsx[0],dotsy[0]) <= blobsize[2])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}
+if(dist(blobx[2],bloby[2],dotsx[2],dotsy[2]) <= blobsize[2])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}
+if(dist(blobx[2],bloby[2],dotsx[3],dotsy[3]) <= blobsize[2])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[4],dotsy[4]) <= blobsize[2])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[5],dotsy[5]) <= blobsize[2])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[6],dotsy[6]) <= blobsize[2])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[7],dotsy[7]) <= blobsize[2])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[8],dotsy[8]) <= blobsize[2])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[9],dotsy[9]) <= blobsize[2])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[10],dotsy[10]) <= blobsize[2])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[11],dotsy[11]) <= blobsize[2])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}
+if(dist(blobx[2],bloby[2],dotsx[12],dotsy[12]) <= blobsize[2])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[13],dotsy[13]) <= blobsize[2])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}if(dist(blobx[2],bloby[2],dotsx[14],dotsy[14]) <= blobsize[2])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[2] = blobsize[2] + 1;
+blobspeed[2] = blobspeed[2] - .05;
+}
+//BLOB SPEED
+if(blobsize[2] <=21)
+{
+  blobspeed[2] = 4;
+}
+if(blobsize[2] >=21 && blobsize[2]<= 22)
+{
+  blobspeed[2] = 3.95;
+}
+if(blobsize[2] >=22 && blobsize[2]<= 23)
+{
+  blobspeed[2] = 3.9;
+}
+if(blobsize[2] >=23 && blobsize[2]<= 24) 
+{
+  blobspeed[2] = 3.85;
+}
+if(blobsize[2] >=24 && blobsize[2]<= 25)
+{
+  blobspeed[2] = 3.8;
+}
+if(blobsize[2] >=25 && blobsize[2]<= 26)
+{
+  blobspeed[2] = 3.75;
+}
+if(blobsize[2] >=26 && blobsize[2]<= 27)
+{
+  blobspeed[2] = 3.7;
+}
+if(blobsize[2] >=27 && blobsize[2]<= 28)
+{
+  blobspeed[2] = 3.65;
+}
+if(blobsize[2] >=28 && blobsize[2]<= 29)
+{
+  blobspeed[2] = 3.6;
+}
+if(blobsize[2] >=29 && blobsize[2]<= 30)
+{
+  blobspeed[2] = 3.55;
+}
+if(blobsize[2] >=30 && blobsize[2]<= 31)
+{
+  blobspeed[2] = 3.5;
+}
+if(blobsize[2] >=31 && blobsize[2]<= 32)
+{
+  blobspeed[2] = 3.45;
+}
+if(blobsize[2] >=32 && blobsize[2]<= 33)
+{
+  blobspeed[2] = 3.4;
+}
+if(blobsize[2] >=33 && blobsize[2]<= 34)
+{
+  blobspeed[2] = 3.35;
+}
+if(blobsize[2] >=34 && blobsize[2]<= 35)
+{
+  blobspeed[2] = 3.3;
+}
+if(blobsize[2] >=35 && blobsize[2]<= 36)
+{
+  blobspeed[2] = 3.25;
+}
+if(blobsize[2] >=36 && blobsize[2]<= 37)
+{
+  blobspeed[2] = 3.2;
+}
+if(blobsize[2] >=37 && blobsize[2]<= 38)
+{
+  blobspeed[2] = 3.15;
+}
+if(blobsize[2] >=38 && blobsize[2]<= 39)
+{
+  blobspeed[2] = 3.1;
+}
+if(blobsize[2] >=39 && blobsize[2]<= 40)
+{
+  blobspeed[2] = 3.05;
+}
+if(blobsize[2] >=40&& blobsize[2]<= 41)
+{
+  blobspeed[2] = 3;
+}
+if(blobsize[2] >=41&& blobsize[2]<= 42)
+{
+  blobspeed[2] = 2.95;
+}
+if(blobsize[2] >=42&& blobsize[2]<= 43)
+{
+  blobspeed[2] = 2.9;
+}
+if(blobsize[2] >=43&& blobsize[2]<= 44)
+{
+  blobspeed[2] = 2.85;
+}
+if(blobsize[2] >=44&& blobsize[2]<= 45)
+{
+  blobspeed[2] = 2.8;
+}
+if(blobsize[2] >=45&& blobsize[2]<= 46)
+{
+  blobspeed[2] = 2.75;
+}
+if(blobsize[2] >=46&& blobsize[2]<= 47)
+{
+  blobspeed[2] = 2.7;
+}
+if(blobsize[2] >=47&& blobsize[2]<= 48)
+{
+  blobspeed[2] = 2.65;
+}
+if(blobsize[2] >=48&& blobsize[2]<= 49)
+{
+  blobspeed[2] = 2.6;
+}
+if(blobsize[2] >=49&& blobsize[2]<= 50)
+{
+  blobspeed[2] = 2.55;
+}
+if(blobsize[2] >=50&& blobsize[2]<= 51)
+{
+  blobspeed[2] = 2.5;
+}
+if(blobsize[2] >=51&& blobsize[2]<= 52)
+{
+  blobspeed[2] = 2.45;
+}
+if(blobsize[2] >=52&& blobsize[2]<= 53)
+{
+  blobspeed[2] = 2.4;
+}
+if(blobsize[2] >=53&& blobsize[2]<= 54)
+{
+  blobspeed[2] = 2.35;
+}
+if(blobsize[2] >=54&& blobsize[2]<= 55)
+{
+  blobspeed[2] = 2.3;
+}
+if(blobsize[2] >=55&& blobsize[2]<= 56)
+{
+  blobspeed[2] = 2.25;
+}
+if(blobsize[2] >=56&& blobsize[2]<= 57)
+{
+  blobspeed[2] = 2.2;
+}
+if(blobsize[2] >=57&& blobsize[2]<= 58)
+{
+  blobspeed[2] = 2.15;
+}
+if(blobsize[2] >=58&& blobsize[2]<= 59)
+{
+  blobspeed[2] = 2.1;
+}
+if(blobsize[2] >=59&& blobsize[2]<= 60)
+{
+  blobspeed[2] = 2.05;
+}
+if(blobsize[2] >=60&& blobsize[2]<= 61)
+{
+  blobspeed[2] = 2.0;
+}
+if(blobsize[2] >=61&& blobsize[2]<= 62)
+{
+  blobspeed[2] = 2.0;
+}
+if(blobsize[2] >=62&& blobsize[2]<= 63)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=63&& blobsize[2]<= 64)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=64&& blobsize[2]<= 65)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=65&& blobsize[2]<= 66)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=66&& blobsize[2]<= 67)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=67&& blobsize[2]<= 68)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=68&& blobsize[2]<= 69)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=69&& blobsize[2]<= 70)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=70&& blobsize[2]<= 71)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=71&& blobsize[2]<= 72)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=72&& blobsize[2]<= 73)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=73&& blobsize[2]<= 74)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=74&& blobsize[2]<= 75)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=75&& blobsize[2]<= 76)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=76&& blobsize[2]<= 77)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=77&& blobsize[2]<= 78)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=78&& blobsize[2]<= 79)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >=79&& blobsize[2]<= 80)
+{
+  blobspeed[2] = 2;
+}
+if(blobsize[2] >= 80)
+{
+  blobspeed[2] = 2;
+}
+//BLOBS
+fill(randcolor3);
+ellipse(blobx[3],bloby[3],blobsize[3],blobsize[3]);
+
+//BLOBS MOVEMENT
+if(blobx[3] < pointx[3])
+{
+  blobx[3] = blobx[3] + blobspeed[3];
+}
+if(blobx[3] > pointx[3])
+{
+  blobx[3] = blobx[3] - blobspeed[3];
+}
+if(bloby[3] < pointy[3])
+{
+  bloby[3] = bloby[3] + blobspeed[3];
+}
+if(bloby[3] > pointy[3])
+{
+  bloby[3] = bloby[3] - blobspeed[3];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[3],bloby[3],pointx[3],pointy[3]) <= 5)
+{
+ pointx[3] = random(0,1200);
+pointy[3] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[3],bloby[3]) <= size/2 && blobsize[3] >= size)
+{
+    size = 10;   
+    x = random(0,1200);   
+    y = random(0,700);
+    Score = 0;
+}
+if(dist(x,y,blobx[3],bloby[3]) <= size/2 && blobsize[3] <= size)
+{
+  size = size + blobsize[3]/4;
+  blobx[3] = random(0,1200);
+  bloby[3] = random(0,700);
+  blobsize[3] = random(20,maxsize);
+
+  speed = speed - blobsize[3]*.005;
+  
+  
+}
+
+//BLOBS EATING
+if(dist(blobx[3],bloby[3],dotsx[1],dotsy[1]) <= blobsize[3])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}
+if(dist(blobx[3],bloby[3],dotsx[0],dotsy[0]) <= blobsize[3])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}
+if(dist(blobx[3],bloby[3],dotsx[2],dotsy[2]) <= blobsize[3])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}
+if(dist(blobx[3],bloby[3],dotsx[3],dotsy[3]) <= blobsize[3])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[4],dotsy[4]) <= blobsize[3])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[5],dotsy[5]) <= blobsize[3])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[6],dotsy[6]) <= blobsize[3])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[7],dotsy[7]) <= blobsize[3])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[8],dotsy[8]) <= blobsize[3])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[9],dotsy[9]) <= blobsize[3])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[10],dotsy[10]) <= blobsize[3])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[11],dotsy[11]) <= blobsize[3])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}
+if(dist(blobx[3],bloby[3],dotsx[12],dotsy[12]) <= blobsize[3])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[13],dotsy[13]) <= blobsize[3])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}if(dist(blobx[3],bloby[3],dotsx[14],dotsy[14]) <= blobsize[3])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[3] = blobsize[3] + 1;
+blobspeed[3] = blobspeed[3] - .05;
+}
+//BLOB SPEED
+if(blobsize[3] <=21)
+{
+  blobspeed[3] = 4;
+}
+if(blobsize[3] >=21 && blobsize[3]<= 22)
+{
+  blobspeed[3] = 3.95;
+}
+if(blobsize[3] >=22 && blobsize[3]<= 23)
+{
+  blobspeed[3] = 3.9;
+}
+if(blobsize[3] >=23 && blobsize[3]<= 24) 
+{
+  blobspeed[3] = 3.85;
+}
+if(blobsize[3] >=24 && blobsize[3]<= 25)
+{
+  blobspeed[3] = 3.8;
+}
+if(blobsize[3] >=25 && blobsize[3]<= 26)
+{
+  blobspeed[3] = 3.75;
+}
+if(blobsize[3] >=26 && blobsize[3]<= 27)
+{
+  blobspeed[3] = 3.7;
+}
+if(blobsize[3] >=27 && blobsize[3]<= 28)
+{
+  blobspeed[3] = 3.65;
+}
+if(blobsize[3] >=28 && blobsize[3]<= 29)
+{
+  blobspeed[3] = 3.6;
+}
+if(blobsize[3] >=29 && blobsize[3]<= 30)
+{
+  blobspeed[3] = 3.55;
+}
+if(blobsize[3] >=30 && blobsize[3]<= 31)
+{
+  blobspeed[3] = 3.5;
+}
+if(blobsize[3] >=31 && blobsize[3]<= 32)
+{
+  blobspeed[3] = 3.45;
+}
+if(blobsize[3] >=32 && blobsize[3]<= 33)
+{
+  blobspeed[3] = 3.4;
+}
+if(blobsize[3] >=33 && blobsize[3]<= 34)
+{
+  blobspeed[3] = 3.35;
+}
+if(blobsize[3] >=34 && blobsize[3]<= 35)
+{
+  blobspeed[3] = 3.3;
+}
+if(blobsize[3] >=35 && blobsize[3]<= 36)
+{
+  blobspeed[3] = 3.25;
+}
+if(blobsize[3] >=36 && blobsize[3]<= 37)
+{
+  blobspeed[3] = 3.2;
+}
+if(blobsize[3] >=37 && blobsize[3]<= 38)
+{
+  blobspeed[3] = 3.15;
+}
+if(blobsize[3] >=38 && blobsize[3]<= 39)
+{
+  blobspeed[3] = 3.1;
+}
+if(blobsize[3] >=39 && blobsize[3]<= 40)
+{
+  blobspeed[3] = 3.05;
+}
+if(blobsize[3] >=40&& blobsize[3]<= 41)
+{
+  blobspeed[3] = 3;
+}
+if(blobsize[3] >=41&& blobsize[3]<= 42)
+{
+  blobspeed[3] = 2.95;
+}
+if(blobsize[3] >=42&& blobsize[3]<= 43)
+{
+  blobspeed[3] = 2.9;
+}
+if(blobsize[3] >=43&& blobsize[3]<= 44)
+{
+  blobspeed[3] = 2.85;
+}
+if(blobsize[3] >=44&& blobsize[3]<= 45)
+{
+  blobspeed[3] = 2.8;
+}
+if(blobsize[3] >=45&& blobsize[3]<= 46)
+{
+  blobspeed[3] = 2.75;
+}
+if(blobsize[3] >=46&& blobsize[3]<= 47)
+{
+  blobspeed[3] = 2.7;
+}
+if(blobsize[3] >=47&& blobsize[3]<= 48)
+{
+  blobspeed[3] = 2.65;
+}
+if(blobsize[3] >=48&& blobsize[3]<= 49)
+{
+  blobspeed[3] = 2.6;
+}
+if(blobsize[3] >=49&& blobsize[3]<= 50)
+{
+  blobspeed[3] = 2.55;
+}
+if(blobsize[3] >=50&& blobsize[3]<= 51)
+{
+  blobspeed[3] = 2.5;
+}
+if(blobsize[3] >=51&& blobsize[3]<= 52)
+{
+  blobspeed[3] = 2.45;
+}
+if(blobsize[3] >=52&& blobsize[3]<= 53)
+{
+  blobspeed[3] = 2.4;
+}
+if(blobsize[3] >=53&& blobsize[3]<= 54)
+{
+  blobspeed[3] = 2.35;
+}
+if(blobsize[3] >=54&& blobsize[3]<= 55)
+{
+  blobspeed[3] = 2.3;
+}
+if(blobsize[3] >=55&& blobsize[3]<= 56)
+{
+  blobspeed[3] = 2.25;
+}
+if(blobsize[3] >=56&& blobsize[3]<= 57)
+{
+  blobspeed[3] = 2.2;
+}
+if(blobsize[3] >=57&& blobsize[3]<= 58)
+{
+  blobspeed[3] = 2.15;
+}
+if(blobsize[3] >=58&& blobsize[3]<= 59)
+{
+  blobspeed[3] = 2.1;
+}
+if(blobsize[3] >=59&& blobsize[3]<= 60)
+{
+  blobspeed[3] = 2.05;
+}
+if(blobsize[3] >=60&& blobsize[3]<= 61)
+{
+  blobspeed[3] = 2.0;
+}
+if(blobsize[3] >=61&& blobsize[3]<= 62)
+{
+  blobspeed[3] = 2.0;
+}
+if(blobsize[3] >=62&& blobsize[3]<= 63)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=63&& blobsize[3]<= 64)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=64&& blobsize[3]<= 65)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=65&& blobsize[3]<= 66)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=66&& blobsize[3]<= 67)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=67&& blobsize[3]<= 68)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=68&& blobsize[3]<= 69)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=69&& blobsize[3]<= 70)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=70&& blobsize[3]<= 71)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=71&& blobsize[3]<= 72)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=72&& blobsize[3]<= 73)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=73&& blobsize[3]<= 74)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=74&& blobsize[3]<= 75)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=75&& blobsize[3]<= 76)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=76&& blobsize[3]<= 77)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=77&& blobsize[3]<= 78)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=78&& blobsize[3]<= 79)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >=79&& blobsize[3]<= 80)
+{
+  blobspeed[3] = 2;
+}
+if(blobsize[3] >= 80)
+{
+  blobspeed[3] = 2;
+}
+//BLOBS
+fill(randcolor4);
+ellipse(blobx[4],bloby[4],blobsize[4],blobsize[4]);
+
+//BLOBS MOVEMENT
+if(blobx[4] < pointx[4])
+{
+  blobx[4] = blobx[4] + blobspeed[4];
+}
+if(blobx[4] > pointx[4])
+{
+  blobx[4] = blobx[4] - blobspeed[4];
+}
+if(bloby[4] < pointy[4])
+{
+  bloby[4] = bloby[4] + blobspeed[4];
+}
+if(bloby[4] > pointy[4])
+{
+  bloby[4] = bloby[4] - blobspeed[4];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[4],bloby[4],pointx[4],pointy[4]) <= 5)
+{
+ pointx[4] = random(0,1200);
+pointy[4] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[4],bloby[4]) <= size/2 && blobsize[4] >= size)
+{
+    size = 10;   x = random(0,1200);   y = random(0,700); speed = 5;
+    speed = 5;  size = 10;   x = random(0,1200);   y = random(0,700); speed = 5; speed = 5;
+    Score = 0;
+}
+if(dist(x,y,blobx[4],bloby[4]) <= size/2 && blobsize[4] <= size)
+{
+  size = size + blobsize[4]/4;
+  blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+ 
+  speed = speed - blobsize[4]*.005;
+  
+  
+}
+if(dist(x,y,blobx[4],bloby[4]) <= blobsize[4]/2 && blobsize[4] >= size)
+{
+size = 10;
+x = random(0,1200);
+y = random(0,700);
+Score = 0;
+}
+if(dist(x,y,blobx[4],bloby[4]) <= blobsize[4]/2 && blobsize[4] <= size)
+{
+  size = size + blobsize[4]/4;
+  blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+
+  speed = speed - blobsize[4]*.005;
+  
+  
+}
+//BLOBS EATING
+if(dist(blobx[4],bloby[4],dotsx[1],dotsy[1]) <= blobsize[4])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}
+if(dist(blobx[4],bloby[4],dotsx[0],dotsy[0]) <= blobsize[4])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}
+if(dist(blobx[4],bloby[4],dotsx[2],dotsy[2]) <= blobsize[4])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}
+if(dist(blobx[4],bloby[4],dotsx[3],dotsy[3]) <= blobsize[4])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[4],dotsy[4]) <= blobsize[4])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[5],dotsy[5]) <= blobsize[4])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[6],dotsy[6]) <= blobsize[4])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[7],dotsy[7]) <= blobsize[4])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[8],dotsy[8]) <= blobsize[4])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[9],dotsy[9]) <= blobsize[4])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[10],dotsy[10]) <= blobsize[4])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[11],dotsy[11]) <= blobsize[4])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}
+if(dist(blobx[4],bloby[4],dotsx[12],dotsy[12]) <= blobsize[4])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[13],dotsy[13]) <= blobsize[4])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}if(dist(blobx[4],bloby[4],dotsx[14],dotsy[14]) <= blobsize[4])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[4] = blobsize[4] + 1;
+blobspeed[4] = blobspeed[4] - .05;
+}
+//BLOB SPEED
+if(blobsize[4] <=21)
+{
+  blobspeed[4] = 4;
+}
+if(blobsize[4] >=21 && blobsize[4]<= 22)
+{
+  blobspeed[4] = 3.95;
+}
+if(blobsize[4] >=22 && blobsize[4]<= 23)
+{
+  blobspeed[4] = 3.9;
+}
+if(blobsize[4] >=23 && blobsize[4]<= 24) 
+{
+  blobspeed[4] = 3.85;
+}
+if(blobsize[4] >=24 && blobsize[4]<= 25)
+{
+  blobspeed[4] = 3.8;
+}
+if(blobsize[4] >=25 && blobsize[4]<= 26)
+{
+  blobspeed[4] = 3.75;
+}
+if(blobsize[4] >=26 && blobsize[4]<= 27)
+{
+  blobspeed[4] = 3.7;
+}
+if(blobsize[4] >=27 && blobsize[4]<= 28)
+{
+  blobspeed[4] = 3.65;
+}
+if(blobsize[4] >=28 && blobsize[4]<= 29)
+{
+  blobspeed[4] = 3.6;
+}
+if(blobsize[4] >=29 && blobsize[4]<= 30)
+{
+  blobspeed[4] = 3.55;
+}
+if(blobsize[4] >=30 && blobsize[4]<= 31)
+{
+  blobspeed[4] = 3.5;
+}
+if(blobsize[4] >=31 && blobsize[4]<= 32)
+{
+  blobspeed[4] = 3.45;
+}
+if(blobsize[4] >=32 && blobsize[4]<= 33)
+{
+  blobspeed[4] = 3.4;
+}
+if(blobsize[4] >=33 && blobsize[4]<= 34)
+{
+  blobspeed[4] = 3.35;
+}
+if(blobsize[4] >=34 && blobsize[4]<= 35)
+{
+  blobspeed[4] = 3.3;
+}
+if(blobsize[4] >=35 && blobsize[4]<= 36)
+{
+  blobspeed[4] = 3.25;
+}
+if(blobsize[4] >=36 && blobsize[4]<= 37)
+{
+  blobspeed[4] = 3.2;
+}
+if(blobsize[4] >=37 && blobsize[4]<= 38)
+{
+  blobspeed[4] = 3.15;
+}
+if(blobsize[4] >=38 && blobsize[4]<= 39)
+{
+  blobspeed[4] = 3.1;
+}
+if(blobsize[4] >=39 && blobsize[4]<= 40)
+{
+  blobspeed[4] = 3.05;
+}
+if(blobsize[4] >=40&& blobsize[4]<= 41)
+{
+  blobspeed[4] = 3;
+}
+if(blobsize[4] >=41&& blobsize[4]<= 42)
+{
+  blobspeed[4] = 2.95;
+}
+if(blobsize[4] >=42&& blobsize[4]<= 43)
+{
+  blobspeed[4] = 2.9;
+}
+if(blobsize[4] >=43&& blobsize[4]<= 44)
+{
+  blobspeed[4] = 2.85;
+}
+if(blobsize[4] >=44&& blobsize[4]<= 45)
+{
+  blobspeed[4] = 2.8;
+}
+if(blobsize[4] >=45&& blobsize[4]<= 46)
+{
+  blobspeed[4] = 2.75;
+}
+if(blobsize[4] >=46&& blobsize[4]<= 47)
+{
+  blobspeed[4] = 2.7;
+}
+if(blobsize[4] >=47&& blobsize[4]<= 48)
+{
+  blobspeed[4] = 2.65;
+}
+if(blobsize[4] >=48&& blobsize[4]<= 49)
+{
+  blobspeed[4] = 2.6;
+}
+if(blobsize[4] >=49&& blobsize[4]<= 50)
+{
+  blobspeed[4] = 2.55;
+}
+if(blobsize[4] >=50&& blobsize[4]<= 51)
+{
+  blobspeed[4] = 2.5;
+}
+if(blobsize[4] >=51&& blobsize[4]<= 52)
+{
+  blobspeed[4] = 2.45;
+}
+if(blobsize[4] >=52&& blobsize[4]<= 53)
+{
+  blobspeed[4] = 2.4;
+}
+if(blobsize[4] >=53&& blobsize[4]<= 54)
+{
+  blobspeed[4] = 2.35;
+}
+if(blobsize[4] >=54&& blobsize[4]<= 55)
+{
+  blobspeed[4] = 2.3;
+}
+if(blobsize[4] >=55&& blobsize[4]<= 56)
+{
+  blobspeed[4] = 2.25;
+}
+if(blobsize[4] >=56&& blobsize[4]<= 57)
+{
+  blobspeed[4] = 2.2;
+}
+if(blobsize[4] >=57&& blobsize[4]<= 58)
+{
+  blobspeed[4] = 2.15;
+}
+if(blobsize[4] >=58&& blobsize[4]<= 59)
+{
+  blobspeed[4] = 2.1;
+}
+if(blobsize[4] >=59&& blobsize[4]<= 60)
+{
+  blobspeed[4] = 2.05;
+}
+if(blobsize[4] >=60&& blobsize[4]<= 61)
+{
+  blobspeed[4] = 2.0;
+}
+if(blobsize[4] >=61&& blobsize[4]<= 62)
+{
+  blobspeed[4] = 2.0;
+}
+if(blobsize[4] >=62&& blobsize[4]<= 63)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=63&& blobsize[4]<= 64)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=64&& blobsize[4]<= 65)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=65&& blobsize[4]<= 66)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=66&& blobsize[4]<= 67)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=67&& blobsize[4]<= 68)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=68&& blobsize[4]<= 69)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=69&& blobsize[4]<= 70)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=70&& blobsize[4]<= 71)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=71&& blobsize[4]<= 72)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=72&& blobsize[4]<= 73)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=73&& blobsize[4]<= 74)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=74&& blobsize[4]<= 75)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=75&& blobsize[4]<= 76)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=76&& blobsize[4]<= 77)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=77&& blobsize[4]<= 78)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=78&& blobsize[4]<= 79)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >=79&& blobsize[4]<= 80)
+{
+  blobspeed[4] = 2;
+}
+if(blobsize[4] >= 80)
+{
+  blobspeed[4] = 2;
+}
+//BLOBS
+fill(randcolor5);
+ellipse(blobx[5],bloby[5],blobsize[5],blobsize[5]);
+
+//BLOBS MOVEMENT
+if(blobx[5] < pointx[5])
+{
+  blobx[5] = blobx[5] + blobspeed[5];
+}
+if(blobx[5] > pointx[5])
+{
+  blobx[5] = blobx[5] - blobspeed[5];
+}
+if(bloby[5] < pointy[5])
+{
+  bloby[5] = bloby[5] + blobspeed[5];
+}
+if(bloby[5] > pointy[5])
+{
+  bloby[5] = bloby[5] - blobspeed[5];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[5],bloby[5],pointx[5],pointy[5]) <= 5)
+{
+ pointx[5] = random(0,1200);
+pointy[5] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[5],bloby[5]) <= size/2 && blobsize[5] >= size)
+{
+    size = 10;   x = random(0,1200);   y = random(0,700); speed = 5; speed = 5;
+    Score = 0;
+}
+if(dist(x,y,blobx[5],bloby[5]) <= size/2 && blobsize[5] <= size)
+{
+  size = size + blobsize[5]/4;
+  blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+  
+  speed = speed - blobsize[5]*.005;
+  
+  
+}
+
+//BLOBS EATING
+if(dist(blobx[5],bloby[5],dotsx[1],dotsy[1]) <= blobsize[5])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}
+if(dist(blobx[5],bloby[5],dotsx[0],dotsy[0]) <= blobsize[5])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}
+if(dist(blobx[5],bloby[5],dotsx[2],dotsy[2]) <= blobsize[5])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}
+if(dist(blobx[5],bloby[5],dotsx[3],dotsy[3]) <= blobsize[5])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[4],dotsy[4]) <= blobsize[5])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[5],dotsy[5]) <= blobsize[5])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[6],dotsy[6]) <= blobsize[5])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[7],dotsy[7]) <= blobsize[5])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[8],dotsy[8]) <= blobsize[5])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[9],dotsy[9]) <= blobsize[5])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[10],dotsy[10]) <= blobsize[5])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[11],dotsy[11]) <= blobsize[5])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}
+if(dist(blobx[5],bloby[5],dotsx[12],dotsy[12]) <= blobsize[5])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[13],dotsy[13]) <= blobsize[5])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}if(dist(blobx[5],bloby[5],dotsx[14],dotsy[14]) <= blobsize[5])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[5] = blobsize[5] + 1;
+blobspeed[5] = blobspeed[5] - .05;
+}
+//BLOB SPEED
+if(blobsize[5] <=21)
+{
+  blobspeed[5] = 4;
+}
+if(blobsize[5] >=21 && blobsize[5]<= 22)
+{
+  blobspeed[5] = 3.95;
+}
+if(blobsize[5] >=22 && blobsize[5]<= 23)
+{
+  blobspeed[5] = 3.9;
+}
+if(blobsize[5] >=23 && blobsize[5]<= 24) 
+{
+  blobspeed[5] = 3.85;
+}
+if(blobsize[5] >=24 && blobsize[5]<= 25)
+{
+  blobspeed[5] = 3.8;
+}
+if(blobsize[5] >=25 && blobsize[5]<= 26)
+{
+  blobspeed[5] = 3.75;
+}
+if(blobsize[5] >=26 && blobsize[5]<= 27)
+{
+  blobspeed[5] = 3.7;
+}
+if(blobsize[5] >=27 && blobsize[5]<= 28)
+{
+  blobspeed[5] = 3.65;
+}
+if(blobsize[5] >=28 && blobsize[5]<= 29)
+{
+  blobspeed[5] = 3.6;
+}
+if(blobsize[5] >=29 && blobsize[5]<= 30)
+{
+  blobspeed[5] = 3.55;
+}
+if(blobsize[5] >=30 && blobsize[5]<= 31)
+{
+  blobspeed[5] = 3.5;
+}
+if(blobsize[5] >=31 && blobsize[5]<= 32)
+{
+  blobspeed[5] = 3.45;
+}
+if(blobsize[5] >=32 && blobsize[5]<= 33)
+{
+  blobspeed[5] = 3.4;
+}
+if(blobsize[5] >=33 && blobsize[5]<= 34)
+{
+  blobspeed[5] = 3.35;
+}
+if(blobsize[5] >=34 && blobsize[5]<= 35)
+{
+  blobspeed[5] = 3.3;
+}
+if(blobsize[5] >=35 && blobsize[5]<= 36)
+{
+  blobspeed[5] = 3.25;
+}
+if(blobsize[5] >=36 && blobsize[5]<= 37)
+{
+  blobspeed[5] = 3.2;
+}
+if(blobsize[5] >=37 && blobsize[5]<= 38)
+{
+  blobspeed[5] = 3.15;
+}
+if(blobsize[5] >=38 && blobsize[5]<= 39)
+{
+  blobspeed[5] = 3.1;
+}
+if(blobsize[5] >=39 && blobsize[5]<= 40)
+{
+  blobspeed[5] = 3.05;
+}
+if(blobsize[5] >=40&& blobsize[5]<= 41)
+{
+  blobspeed[5] = 3;
+}
+if(blobsize[5] >=41&& blobsize[5]<= 42)
+{
+  blobspeed[5] = 2.95;
+}
+if(blobsize[5] >=42&& blobsize[5]<= 43)
+{
+  blobspeed[5] = 2.9;
+}
+if(blobsize[5] >=43&& blobsize[5]<= 44)
+{
+  blobspeed[5] = 2.85;
+}
+if(blobsize[5] >=44&& blobsize[5]<= 45)
+{
+  blobspeed[5] = 2.8;
+}
+if(blobsize[5] >=45&& blobsize[5]<= 46)
+{
+  blobspeed[5] = 2.75;
+}
+if(blobsize[5] >=46&& blobsize[5]<= 47)
+{
+  blobspeed[5] = 2.7;
+}
+if(blobsize[5] >=47&& blobsize[5]<= 48)
+{
+  blobspeed[5] = 2.65;
+}
+if(blobsize[5] >=48&& blobsize[5]<= 49)
+{
+  blobspeed[5] = 2.6;
+}
+if(blobsize[5] >=49&& blobsize[5]<= 50)
+{
+  blobspeed[5] = 2.55;
+}
+if(blobsize[5] >=50&& blobsize[5]<= 51)
+{
+  blobspeed[5] = 2.5;
+}
+if(blobsize[5] >=51&& blobsize[5]<= 52)
+{
+  blobspeed[5] = 2.45;
+}
+if(blobsize[5] >=52&& blobsize[5]<= 53)
+{
+  blobspeed[5] = 2.4;
+}
+if(blobsize[5] >=53&& blobsize[5]<= 54)
+{
+  blobspeed[5] = 2.35;
+}
+if(blobsize[5] >=54&& blobsize[5]<= 55)
+{
+  blobspeed[5] = 2.3;
+}
+if(blobsize[5] >=55&& blobsize[5]<= 56)
+{
+  blobspeed[5] = 2.25;
+}
+if(blobsize[5] >=56&& blobsize[5]<= 57)
+{
+  blobspeed[5] = 2.2;
+}
+if(blobsize[5] >=57&& blobsize[5]<= 58)
+{
+  blobspeed[5] = 2.15;
+}
+if(blobsize[5] >=58&& blobsize[5]<= 59)
+{
+  blobspeed[5] = 2.1;
+}
+if(blobsize[5] >=59&& blobsize[5]<= 60)
+{
+  blobspeed[5] = 2.05;
+}
+if(blobsize[5] >=60&& blobsize[5]<= 61)
+{
+  blobspeed[5] = 2.0;
+}
+if(blobsize[5] >=61&& blobsize[5]<= 62)
+{
+  blobspeed[5] = 2.0;
+}
+if(blobsize[5] >=62&& blobsize[5]<= 63)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=63&& blobsize[5]<= 64)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=64&& blobsize[5]<= 65)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=65&& blobsize[5]<= 66)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=66&& blobsize[5]<= 67)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=67&& blobsize[5]<= 68)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=68&& blobsize[5]<= 69)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=69&& blobsize[5]<= 70)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=70&& blobsize[5]<= 71)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=71&& blobsize[5]<= 72)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=72&& blobsize[5]<= 73)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=73&& blobsize[5]<= 74)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=74&& blobsize[5]<= 75)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=75&& blobsize[5]<= 76)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=76&& blobsize[5]<= 77)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=77&& blobsize[5]<= 78)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=78&& blobsize[5]<= 79)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >=79&& blobsize[5]<= 80)
+{
+  blobspeed[5] = 2;
+}
+if(blobsize[5] >= 80)
+{
+  blobspeed[5] = 2;
+}
+//BLOBS
+fill(randcolor6);
+ellipse(blobx[6],bloby[6],blobsize[6],blobsize[6]);
+
+//BLOBS MOVEMENT
+if(blobx[6] < pointx[6])
+{
+  blobx[6] = blobx[6] + blobspeed[6];
+}
+if(blobx[6] > pointx[6])
+{
+  blobx[6] = blobx[6] - blobspeed[6];
+}
+if(bloby[6] < pointy[6])
+{
+  bloby[6] = bloby[6] + blobspeed[6];
+}
+if(bloby[6] > pointy[6])
+{
+  bloby[6] = bloby[6] - blobspeed[6];
+}
+
+//BLOB CHANGING DIRECTION
+
+if(dist(blobx[6],bloby[6],pointx[6],pointy[6]) <= 5)
+{
+ pointx[6] = random(0,1200);
+pointy[6] = random(0,700); 
+}
+
+//EATING
+if(dist(x,y,blobx[6],bloby[6]) <= size/2 && blobsize[6] >= size)
+{
+    size = 10;   x = random(0,1200);   y = random(0,700); speed = 5; speed = 5;
+    Score = 0;
+}
+if(dist(x,y,blobx[6],bloby[6]) <= size/2 && blobsize[6] <= size)
+{
+  size = size + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+ 
+  speed = speed - blobsize[6]*.005;
+  
+  
+}
+
+//BLOBS EATING
+if(dist(blobx[6],bloby[6],dotsx[1],dotsy[1]) <= blobsize[6])
+{
+  dotsx[1] = random(0,1200);
+  dotsy[1] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}
+if(dist(blobx[6],bloby[6],dotsx[0],dotsy[0]) <= blobsize[6])
+{
+  dotsx[0] = random(0,1200);
+  dotsy[0] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}
+if(dist(blobx[6],bloby[6],dotsx[2],dotsy[2]) <= blobsize[6])
+{
+  dotsx[2] = random(0,1200);
+  dotsy[2] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}
+if(dist(blobx[6],bloby[6],dotsx[3],dotsy[3]) <= blobsize[6])
+{
+  dotsx[3] = random(0,1200);
+  dotsy[3] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[4],dotsy[4]) <= blobsize[6])
+{
+  dotsx[4] = random(0,1200);
+  dotsy[4] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[5],dotsy[5]) <= blobsize[6])
+{
+  dotsx[5] = random(0,1200);
+  dotsy[5] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[6],dotsy[6]) <= blobsize[6])
+{
+  dotsx[6] = random(0,1200);
+  dotsy[6] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[7],dotsy[7]) <= blobsize[6])
+{
+  dotsx[7] = random(0,1200);
+  dotsy[7] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[8],dotsy[8]) <= blobsize[6])
+{
+  dotsx[8] = random(0,1200);
+  dotsy[8] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[9],dotsy[9]) <= blobsize[6])
+{
+  dotsx[9] = random(0,1200);
+  dotsy[9] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[10],dotsy[10]) <= blobsize[6])
+{
+  dotsx[10] = random(0,1200);
+  dotsy[10] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[11],dotsy[11]) <= blobsize[6])
+{
+  dotsx[11] = random(0,1200);
+  dotsy[11] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}
+if(dist(blobx[6],bloby[6],dotsx[12],dotsy[12]) <= blobsize[6])
+{
+  dotsx[12] = random(0,1200);
+  dotsy[12] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[13],dotsy[13]) <= blobsize[6])
+{
+  dotsx[13] = random(0,1200);
+  dotsy[13] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}if(dist(blobx[6],bloby[6],dotsx[14],dotsy[14]) <= blobsize[6])
+{
+  dotsx[14] = random(0,1200);
+  dotsy[14] = random(0,700);
+blobsize[6] = blobsize[6] + 1;
+blobspeed[6] = blobspeed[6] - .05;
+}
+//BLOB SPEED
+if(blobsize[6] <=21)
+{
+  blobspeed[6] = 4;
+}
+if(blobsize[6] >=21 && blobsize[6]<= 22)
+{
+  blobspeed[6] = 3.95;
+}
+if(blobsize[6] >=22 && blobsize[6]<= 23)
+{
+  blobspeed[6] = 3.9;
+}
+if(blobsize[6] >=23 && blobsize[6]<= 24) 
+{
+  blobspeed[6] = 3.85;
+}
+if(blobsize[6] >=24 && blobsize[6]<= 25)
+{
+  blobspeed[6] = 3.8;
+}
+if(blobsize[6] >=25 && blobsize[6]<= 26)
+{
+  blobspeed[6] = 3.75;
+}
+if(blobsize[6] >=26 && blobsize[6]<= 27)
+{
+  blobspeed[6] = 3.7;
+}
+if(blobsize[6] >=27 && blobsize[6]<= 28)
+{
+  blobspeed[6] = 3.65;
+}
+if(blobsize[6] >=28 && blobsize[6]<= 29)
+{
+  blobspeed[6] = 3.6;
+}
+if(blobsize[6] >=29 && blobsize[6]<= 30)
+{
+  blobspeed[6] = 3.55;
+}
+if(blobsize[6] >=30 && blobsize[6]<= 31)
+{
+  blobspeed[6] = 3.5;
+}
+if(blobsize[6] >=31 && blobsize[6]<= 32)
+{
+  blobspeed[6] = 3.45;
+}
+if(blobsize[6] >=32 && blobsize[6]<= 33)
+{
+  blobspeed[6] = 3.4;
+}
+if(blobsize[6] >=33 && blobsize[6]<= 34)
+{
+  blobspeed[6] = 3.35;
+}
+if(blobsize[6] >=34 && blobsize[6]<= 35)
+{
+  blobspeed[6] = 3.3;
+}
+if(blobsize[6] >=35 && blobsize[6]<= 36)
+{
+  blobspeed[6] = 3.25;
+}
+if(blobsize[6] >=36 && blobsize[6]<= 37)
+{
+  blobspeed[6] = 3.2;
+}
+if(blobsize[6] >=37 && blobsize[6]<= 38)
+{
+  blobspeed[6] = 3.15;
+}
+if(blobsize[6] >=38 && blobsize[6]<= 39)
+{
+  blobspeed[6] = 3.1;
+}
+if(blobsize[6] >=39 && blobsize[6]<= 40)
+{
+  blobspeed[6] = 3.05;
+}
+if(blobsize[6] >=40&& blobsize[6]<= 41)
+{
+  blobspeed[6] = 3;
+}
+if(blobsize[6] >=41&& blobsize[6]<= 42)
+{
+  blobspeed[6] = 2.95;
+}
+if(blobsize[6] >=42&& blobsize[6]<= 43)
+{
+  blobspeed[6] = 2.9;
+}
+if(blobsize[6] >=43&& blobsize[6]<= 44)
+{
+  blobspeed[6] = 2.85;
+}
+if(blobsize[6] >=44&& blobsize[6]<= 45)
+{
+  blobspeed[6] = 2.8;
+}
+if(blobsize[6] >=45&& blobsize[6]<= 46)
+{
+  blobspeed[6] = 2.75;
+}
+if(blobsize[6] >=46&& blobsize[6]<= 47)
+{
+  blobspeed[6] = 2.7;
+}
+if(blobsize[6] >=47&& blobsize[6]<= 48)
+{
+  blobspeed[6] = 2.65;
+}
+if(blobsize[6] >=48&& blobsize[6]<= 49)
+{
+  blobspeed[6] = 2.6;
+}
+if(blobsize[6] >=49&& blobsize[6]<= 50)
+{
+  blobspeed[6] = 2.55;
+}
+if(blobsize[6] >=50&& blobsize[6]<= 51)
+{
+  blobspeed[6] = 2.5;
+}
+if(blobsize[6] >=51&& blobsize[6]<= 52)
+{
+  blobspeed[6] = 2.45;
+}
+if(blobsize[6] >=52&& blobsize[6]<= 53)
+{
+  blobspeed[6] = 2.4;
+}
+if(blobsize[6] >=53&& blobsize[6]<= 54)
+{
+  blobspeed[6] = 2.35;
+}
+if(blobsize[6] >=54&& blobsize[6]<= 55)
+{
+  blobspeed[6] = 2.3;
+}
+if(blobsize[6] >=55&& blobsize[6]<= 56)
+{
+  blobspeed[6] = 2.25;
+}
+if(blobsize[6] >=56&& blobsize[6]<= 57)
+{
+  blobspeed[6] = 2.2;
+}
+if(blobsize[6] >=57&& blobsize[6]<= 58)
+{
+  blobspeed[6] = 2.15;
+}
+if(blobsize[6] >=58&& blobsize[6]<= 59)
+{
+  blobspeed[6] = 2.1;
+}
+if(blobsize[6] >=59&& blobsize[6]<= 60)
+{
+  blobspeed[6] = 2.05;
+}
+if(blobsize[6] >=60&& blobsize[6]<= 61)
+{
+  blobspeed[6] = 2.0;
+}
+if(blobsize[6] >=61&& blobsize[6]<= 62)
+{
+  blobspeed[6] = 2.0;
+}
+if(blobsize[6] >=62&& blobsize[6]<= 63)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=63&& blobsize[6]<= 64)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=64&& blobsize[6]<= 65)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=65&& blobsize[6]<= 66)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=66&& blobsize[6]<= 67)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=67&& blobsize[6]<= 68)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=68&& blobsize[6]<= 69)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=69&& blobsize[6]<= 70)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=70&& blobsize[6]<= 71)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=71&& blobsize[6]<= 72)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=72&& blobsize[6]<= 73)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=73&& blobsize[6]<= 74)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=74&& blobsize[6]<= 75)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=75&& blobsize[6]<= 76)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=76&& blobsize[6]<= 77)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=77&& blobsize[6]<= 78)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=78&& blobsize[6]<= 79)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >=79&& blobsize[6]<= 80)
+{
+  blobspeed[6] = 2;
+}
+if(blobsize[6] >= 80)
+{
+  blobspeed[6] = 2;
+}
+//BLOBS EAT BLOBS
+if(dist(blobx[0],bloby[0],blobx[1],bloby[1]) <= (blobsize[0]+blobsize[1])/2 && blobsize[0] >= blobsize[1])
+{
+  blobsize[0] = blobsize[0] + blobsize[1]/4;
+  blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[1],bloby[1]) <= (blobsize[0]+blobsize[1])/2 && blobsize[0] <= blobsize[1])
+{
+  blobsize[1] = blobsize[1] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+
+if(dist(blobx[0],bloby[0],blobx[2],bloby[2]) <= (blobsize[0]+blobsize[2])/2 && blobsize[0] >= blobsize[2])
+{
+  blobsize[0] = blobsize[0] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[2],bloby[2]) <= (blobsize[0]+blobsize[2])/2 && blobsize[0] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+
+
+
+
+if(dist(blobx[0],bloby[0],blobx[3],bloby[3]) <= (blobsize[0]+blobsize[3])/2 && blobsize[0] >= blobsize[3])
+{
+  blobsize[0] = blobsize[0] + blobsize[3]/4;
+  blobx[3] = random(0,1200);
+  bloby[3] = random(0,700);
+  blobsize[3] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[3],bloby[3]) <= (blobsize[0]+blobsize[3])/2 && blobsize[0] <= blobsize[3])
+{
+  blobsize[3] = blobsize[3] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+
+if(dist(blobx[0],bloby[0],blobx[4],bloby[4]) <= (blobsize[0]+blobsize[4])/2 && blobsize[0] >= blobsize[4])
+{
+  blobsize[0] = blobsize[0] + blobsize[4]/4;
+  blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[4],bloby[4]) <= (blobsize[0]+blobsize[4])/2 && blobsize[0] <= blobsize[4])
+{
+  blobsize[4] = blobsize[4] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+
+if(dist(blobx[0],bloby[0],blobx[5],bloby[5]) <= (blobsize[0]+blobsize[5])/2 && blobsize[0] >= blobsize[5])
+{
+  blobsize[0] = blobsize[0] + blobsize[5]/4;
+  blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[5],bloby[5]) <= (blobsize[0]+blobsize[5])/2 && blobsize[0] <= blobsize[5])
+{
+  blobsize[5] = blobsize[5] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+
+if(dist(blobx[0],bloby[0],blobx[6],bloby[6]) <= (blobsize[0]+blobsize[6])/2 && blobsize[0] >= blobsize[6])
+{
+  blobsize[0] = blobsize[0] + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+}
+if(dist(blobx[0],bloby[0],blobx[6],bloby[6]) <= (blobsize[0]+blobsize[6])/2 && blobsize[0] <= blobsize[6])
+{
+  blobsize[6] = blobsize[6] + blobsize[0]/4;
+    blobx[0] = random(0,1200);
+  bloby[0] = random(0,700);
+  blobsize[0] = random(20,maxsize);
+}
+
+
+
+if(dist(blobx[1],bloby[1],blobx[2],bloby[2]) <= (blobsize[1]+blobsize[2])/2 && blobsize[1] >= blobsize[2])
+{
+  blobsize[1] = blobsize[1] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[1],bloby[1],blobx[2],bloby[2]) <= (blobsize[1]+blobsize[2])/2 && blobsize[1] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[1]/4;
+    blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+
+if(dist(blobx[3],bloby[3],blobx[2],bloby[2]) <= (blobsize[3]+blobsize[2])/2 && blobsize[3] >= blobsize[2])
+{
+  blobsize[3] = blobsize[3] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[3],bloby[3],blobx[2],bloby[2]) <= (blobsize[3]+blobsize[2])/2 && blobsize[3] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[3]/4;
+    blobx[3] = random(0,1200);
+  bloby[3] = random(0,700);
+  blobsize[3] = random(20,maxsize);
+}
+
+
+
+
+
+if(dist(blobx[4],bloby[4],blobx[2],bloby[2]) <= (blobsize[4]+blobsize[2])/2 && blobsize[4] >= blobsize[2])
+{
+  blobsize[4] = blobsize[4] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[4],bloby[4],blobx[2],bloby[2]) <= (blobsize[4]+blobsize[2])/2 && blobsize[4] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[4]/4;
+    blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+}
+
+
+
+
+
+
+if(dist(blobx[5],bloby[5],blobx[2],bloby[2]) <= (blobsize[5]+blobsize[2])/2 && blobsize[5] >= blobsize[2])
+{
+  blobsize[5] = blobsize[5] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[5],bloby[5],blobx[2],bloby[2]) <= (blobsize[5]+blobsize[2])/2 && blobsize[5] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[5]/4;
+    blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+}
+
+
+
+
+
+
+
+
+
+if(dist(blobx[6],bloby[6],blobx[2],bloby[2]) <= (blobsize[6]+blobsize[2])/2 && blobsize[6] >= blobsize[2])
+{
+  blobsize[6] = blobsize[6] + blobsize[2]/4;
+  blobx[2] = random(0,1200);
+  bloby[2] = random(0,700);
+  blobsize[2] = random(20,maxsize);
+}
+if(dist(blobx[6],bloby[6],blobx[2],bloby[2]) <= (blobsize[6]+blobsize[2])/2 && blobsize[6] <= blobsize[2])
+{
+  blobsize[2] = blobsize[2] + blobsize[6]/4;
+    blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+  
+ 
+}
+
+
+
+
+
+
+
+if(dist(blobx[3],bloby[3],blobx[1],bloby[1]) <= (blobsize[3]+blobsize[1])/2 && blobsize[3] >= blobsize[1])
+{
+  blobsize[1] = blobsize[1] + blobsize[3]/4;
+  blobx[3] = random(0,1200);
+  bloby[3] = random(0,700);
+  blobsize[3] = random(20,maxsize);
+}
+if(dist(blobx[3],bloby[3],blobx[1],bloby[1]) <= (blobsize[3]+blobsize[1])/2 && blobsize[3] <= blobsize[1])
+{
+  blobsize[3] = blobsize[3] + blobsize[1]/4;
+    blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+
+
+
+
+if(dist(blobx[4],bloby[4],blobx[1],bloby[1]) <= (blobsize[4]+blobsize[1])/2 && blobsize[4] >= blobsize[1])
+{
+  blobsize[1] = blobsize[1] + blobsize[4]/4;
+  blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+}
+if(dist(blobx[4],bloby[4],blobx[1],bloby[1]) <= (blobsize[4]+blobsize[1])/2 && blobsize[4] <= blobsize[1])
+{
+  blobsize[4] = blobsize[4] + blobsize[1]/4;
+    blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+
+ if(dist(blobx[5],bloby[5],blobx[1],bloby[1]) <= (blobsize[5]+blobsize[1])/2 && blobsize[5] >= blobsize[1])
+{
+  blobsize[1] = blobsize[1] + blobsize[5]/4;
+  blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+}
+if(dist(blobx[5],bloby[5],blobx[1],bloby[1]) <= (blobsize[5]+blobsize[1])/2 && blobsize[5] <= blobsize[1])
+{
+  blobsize[5] = blobsize[5] + blobsize[1]/4;
+    blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+
+
+
+if(dist(blobx[6],bloby[6],blobx[1],bloby[1]) <= (blobsize[6]+blobsize[1])/2 && blobsize[6] >= blobsize[1])
+{
+  blobsize[1] = blobsize[1] + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+}
+if(dist(blobx[6],bloby[6],blobx[1],bloby[1]) <= (blobsize[6]+blobsize[1])/2 && blobsize[6] <= blobsize[1])
+{
+  blobsize[6] = blobsize[6] + blobsize[1]/4;
+    blobx[1] = random(0,1200);
+  bloby[1] = random(0,700);
+  blobsize[1] = random(20,maxsize);
+}
+
+if(dist(blobx[6],bloby[6],blobx[3],bloby[3]) <= (blobsize[6]+blobsize[3])/2 && blobsize[6] >= blobsize[3])
+{
+  blobsize[3] = blobsize[3] + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+}
+if(dist(blobx[6],bloby[6],blobx[3],bloby[3]) <= (blobsize[6]+blobsize[3])/2 && blobsize[6] <= blobsize[3])
+{
+  blobsize[6] = blobsize[6] + blobsize[3]/4;
+    blobx[3] = random(0,1200);
+  bloby[3] = random(0,700);
+  blobsize[3] = random(20,maxsize);
+}
+
+
+
+if(dist(blobx[6],bloby[6],blobx[4],bloby[4]) <= (blobsize[6]+blobsize[4])/2 && blobsize[6] >= blobsize[4])
+{
+  blobsize[4] = blobsize[4] + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+}
+if(dist(blobx[6],bloby[6],blobx[4],bloby[4]) <= (blobsize[6]+blobsize[4])/2 && blobsize[6] <= blobsize[4])
+{
+  blobsize[6] = blobsize[6] + blobsize[4]/4;
+    blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+}
+
+
+
+
+
+
+
+if(dist(blobx[6],bloby[6],blobx[5],bloby[5]) <= (blobsize[6]+blobsize[5])/2 && blobsize[6] >= blobsize[5])
+{
+  blobsize[5] = blobsize[5] + blobsize[6]/4;
+  blobx[6] = random(0,1200);
+  bloby[6] = random(0,700);
+  blobsize[6] = random(20,maxsize);
+}
+if(dist(blobx[6],bloby[6],blobx[5],bloby[5]) <= (blobsize[6]+blobsize[5])/2 && blobsize[6] <= blobsize[5])
+{
+  blobsize[6] = blobsize[6] + blobsize[5]/4;
+    blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+}
+
+
+
+
+
+
+
+if(dist(blobx[4],bloby[4],blobx[5],bloby[5]) <= (blobsize[4]+blobsize[5])/2 && blobsize[4] >= blobsize[5])
+{
+  blobsize[5] = blobsize[5] + blobsize[4]/4;
+  blobx[4] = random(0,1200);
+  bloby[4] = random(0,700);
+  blobsize[4] = random(20,maxsize);
+}
+if(dist(blobx[4],bloby[4],blobx[5],bloby[5]) <= (blobsize[4]+blobsize[5])/2 && blobsize[4] <= blobsize[5])
+{
+  blobsize[4] = blobsize[4] + blobsize[5]/4;
+    blobx[5] = random(0,1200);
+  bloby[5] = random(0,700);
+  blobsize[5] = random(20,maxsize);
+}
+//BLOB SIZE RESTRICTION
+if(blobsize[0] >= 275)
+{
+  blobsize[0] = 275;
+}
+
+if(blobsize[1] >= 275)
+{
+  blobsize[1] = 275;
+}
+
+
+if(blobsize[2] >= 275)
+{
+  blobsize[2] = 275;
+}
+
+
+
+if(blobsize[3] >= 275)
+{
+  blobsize[3] = 275;
+}
+
+
+
+if(blobsize[4] >= 275)
+{
+  blobsize[4] = 275;
+}
+
+
+
+if(blobsize[5] >= 275)
+{
+  blobsize[5] = 275;
+}
+
+
+
+if(blobsize[6] >= 275)
+{
+  blobsize[6] = 275;
+}
+
+} 
